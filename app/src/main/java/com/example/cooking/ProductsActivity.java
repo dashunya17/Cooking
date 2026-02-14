@@ -246,16 +246,15 @@ public class ProductsActivity extends AppCompatActivity
                 Log.d("PRODUCTS", "Код ответа при добавлении: " + response.code());
 
                 if (response.isSuccessful()) {
-                    Log.d("PRODUCTS", " Продукт успешно добавлен на сервер");
+                    Log.d("PRODUCTS", "✅ Продукт успешно добавлен на сервер");
                     Toast.makeText(ProductsActivity.this,
                             "Продукт добавлен", Toast.LENGTH_SHORT).show();
 
                     productList.add(product);
                     adapter.notifyItemInserted(productList.size() - 1);
 
-
                 } else {
-                    Log.e("PRODUCTS", "Ошибка добавления. Code: " + response.code());
+                    Log.e("PRODUCTS", "❌ Ошибка добавления. Code: " + response.code());
 
                     try {
                         if (response.errorBody() != null) {

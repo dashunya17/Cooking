@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:backgroundTint="@color/fon"
     android:clickable="true"
-
     android:focusable="true"
     android:orientation="horizontal"
     android:padding="16dp">
