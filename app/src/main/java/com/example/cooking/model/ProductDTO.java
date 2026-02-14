@@ -1,5 +1,6 @@
 package com.example.cooking.model;
 
+
 public class ProductDTO {
     private Long id;
     private String name;
@@ -7,14 +8,17 @@ public class ProductDTO {
     private Boolean isCommon;
     private String addedAt;
 
-    public ProductDTO(){}
-    public ProductDTO(Long id, String name, String category, Boolean isCommon, String addedAt){
+
+    public ProductDTO() {
+    }
+
+    public ProductDTO(Long id, String name, String category, Boolean isCommon) {
         this.id = id;
         this.name = name;
         this.category = category;
-        this.isCommon=isCommon;
-        this.addedAt = addedAt;
+        this.isCommon = isCommon;
     }
+
 
     public Long getId() {
         return id;
@@ -40,12 +44,13 @@ public class ProductDTO {
         this.category = category;
     }
 
-    public Boolean getCommon() {
+
+    public Boolean getIsCommon() {
         return isCommon;
     }
 
-    public void setCommon(Boolean common) {
-        isCommon = common;
+    public void setIsCommon(Boolean isCommon) {
+        this.isCommon = isCommon;
     }
 
     public String getAddedAt() {

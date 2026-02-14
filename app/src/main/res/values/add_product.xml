@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Существующие строки -->
+    <string name="app_name">Cooking</string>
+
+    <!-- Добавьте эти строки -->
+    <string name="add_product">Добавить продукт</string>
+    <string name="search_hint">Поиск продуктов...</string>
+    <string name="no_products">Продукты не найдены</string>
+
+</resources>

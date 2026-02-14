@@ -8,11 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.cooking.auth.AuthViewModel;
@@ -45,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void setupViewModel() {
-        AuthViewModelFactory factory = new AuthViewModelFactory();
+        AuthViewModelFactory factory = new AuthViewModelFactory(this);
         viewModel = new ViewModelProvider(this, factory).get(AuthViewModel.class);
     }
 
@@ -56,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
             } else if (resource.status == Resource.Status.SUCCESS) {
                 showLoading(false);
                 Toast.makeText(RegisterActivity.this, "Регистрация успешна!", Toast.LENGTH_SHORT).show();
-                startMainActivity();
+                startProductsActivity();
             } else if (resource.status == Resource.Status.ERROR) {
                 showLoading(false);
                 String errorMessage = resource.message != null ? resource.message : "Ошибка регистрации";
@@ -99,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
             editTextName.setError(null);
         }
 
-        // Валидация email
+
         if (TextUtils.isEmpty(email)) {
             editTextEmailAddress.setError("Введите email");
             editTextEmailAddress.requestFocus();
@@ -137,8 +134,8 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    private void startMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
+    private void startProductsActivity() {
+        Intent intent = new Intent(this, UserMainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

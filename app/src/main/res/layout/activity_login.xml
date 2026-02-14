@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/__9_"
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -32,12 +33,13 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Вход"
+            android:textColor="@color/black"
             android:textSize="40dp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="409dp"
+        android:layout_width="375dp"
         android:layout_height="200dp"
         android:layout_marginTop="88dp"
         android:orientation="vertical"
@@ -48,6 +50,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="20dp"
+            android:baselineAligned="false"
             android:orientation="vertical"></LinearLayout>
 
         <TextView
@@ -64,6 +67,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Email"
+            android:textColor="@color/black"
             android:inputType="textEmailAddress" />
 
         <TextView
@@ -80,7 +84,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Пароль"
+            android:textColor="@color/black"
             android:inputType="textPassword" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -95,16 +101,20 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/buttonExit"
+            android:id="@+id/buttonAuth"
             android:layout_width="214dp"
             android:layout_height="wrap_content"
-            android:text="Войти" />
+            android:backgroundTint="@color/button2"
+            android:text="Войти"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/buttonReg"
             android:layout_width="301dp"
             android:layout_height="wrap_content"
-            android:text="Зарегистрироваться" />
+            android:backgroundTint="@color/button2"
+            android:text="Зарегистрироваться"
+            android:textColor="@color/black"/>
     </LinearLayout>
 
 

@@ -1,0 +1,24 @@
+<resources>
+    <string-array name="difficulty_array">
+        <item>легко</item>
+        <item>средне</item>
+        <item>сложно</item>
+    </string-array>
+
+    <string-array name="boolean_choices">
+        <item>Да</item>
+        <item>Нет</item>
+    </string-array>
+
+    <string-array name="units_array">
+        <item>г</item>
+        <item>кг</item>
+        <item>мл</item>
+        <item>л</item>
+        <item>шт</item>
+        <item>ст.л.</item>
+        <item>ч.л.</item>
+        <item>щепотка</item>
+        <item>по вкусу</item>
+    </string-array>
+</resources>

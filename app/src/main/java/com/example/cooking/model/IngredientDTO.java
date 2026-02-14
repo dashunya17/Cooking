@@ -5,12 +5,14 @@ public class IngredientDTO {
     private String productName;
     private Double quantity;
     private String unit;
-    public IngredientDTO(){}
-    public IngredientDTO(Long productId,String productName,Double quantity, String unit){
+
+    public IngredientDTO() {}
+
+    public IngredientDTO(Long productId, String productName, Double quantity, String unit) {
         this.productId = productId;
         this.productName = productName;
         this.quantity = quantity;
-        this.unit=unit;
+        this.unit = unit;
     }
 
     public Long getProductId() {

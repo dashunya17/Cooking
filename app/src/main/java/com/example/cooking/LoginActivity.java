@@ -3,6 +3,7 @@ package com.example.cooking;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -18,8 +19,8 @@ import com.example.cooking.auth.AuthViewModelFactory;
 import com.example.cooking.data.SharedPreferencesManager;
 import com.example.cooking.utils.Resource;
 
-
 public class LoginActivity extends AppCompatActivity {
+
     private EditText editTextEmail, editTextPassword;
     private Button buttonAuth, buttonReg;
     private ProgressBar progressBar;
@@ -29,28 +30,37 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        SharedPreferencesManager.initialize(getApplicationContext());
-        /**Проверяем авторизован ли уже пользователь*/
+
         if (SharedPreferencesManager.isLoggedIn()) {
-            startMainActivity();
+            Log.d("LoginActivity", "User already logged in. isAdmin: " + SharedPreferencesManager.isAdmin());
+            if (SharedPreferencesManager.isAdmin()) {
+                startAdminActivity();
+            } else {
+                startProductsActivity();
+            }
             return;
         }
+
         initViews();
         setupViewModel();
         setupObservers();
         setupClickListeners();
     }
+
     private void initViews() {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
-        buttonAuth = findViewById(R.id.buttonExit);
+        buttonAuth = findViewById(R.id.buttonAuth);
         buttonReg = findViewById(R.id.buttonReg);
-        progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
-        progressBar.setVisibility(View.GONE);
+
+
+        if (progressBar != null) {
+            progressBar.setVisibility(View.GONE);
+        }
     }
 
     private void setupViewModel() {
-        AuthViewModelFactory factory = new AuthViewModelFactory();
+        AuthViewModelFactory factory = new AuthViewModelFactory(this);
         viewModel = new ViewModelProvider(this, factory).get(AuthViewModel.class);
     }
 
@@ -61,7 +71,12 @@ public class LoginActivity extends AppCompatActivity {
             } else if (resource.status == Resource.Status.SUCCESS) {
                 showLoading(false);
                 Toast.makeText(LoginActivity.this, "Вход выполнен!", Toast.LENGTH_SHORT).show();
-                startMainActivity();
+
+                if (SharedPreferencesManager.isAdmin()) {
+                    startAdminActivity();
+                } else {
+                    startProductsActivity();
+                }
             } else if (resource.status == Resource.Status.ERROR) {
                 showLoading(false);
                 String errorMessage = resource.message != null ? resource.message : "Ошибка авторизации";
@@ -75,10 +90,13 @@ public class LoginActivity extends AppCompatActivity {
             String email = editTextEmail.getText().toString().trim();
             String password = editTextPassword.getText().toString().trim();
 
+            Log.d("LoginActivity", "Login attempt. Email: " + email);
+
             if (validateInput(email, password)) {
                 viewModel.login(email, password);
             }
         });
+
         buttonReg.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
@@ -87,6 +105,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean validateInput(String email, String password) {
         boolean isValid = true;
+
         if (TextUtils.isEmpty(email)) {
             editTextEmail.setError("Введите email");
             editTextEmail.requestFocus();
@@ -98,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             editTextEmail.setError(null);
         }
+
         if (TextUtils.isEmpty(password)) {
             editTextPassword.setError("Введите пароль");
             editTextPassword.requestFocus();
@@ -109,11 +129,17 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             editTextPassword.setError(null);
         }
+
         return isValid;
     }
+
     private void showLoading(boolean show) {
         buttonAuth.setEnabled(!show);
         buttonReg.setEnabled(!show);
+
+        if (progressBar != null) {
+            progressBar.setVisibility(show ? View.VISIBLE : View.GONE);
+        }
 
         if (show) {
             buttonAuth.setText("Вход...");
@@ -121,8 +147,16 @@ public class LoginActivity extends AppCompatActivity {
             buttonAuth.setText("Вход");
         }
     }
-    private void startMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
+
+    private void startProductsActivity() {
+        Intent intent = new Intent(this, UserMainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    private void startAdminActivity() {
+        Intent intent = new Intent(this, AdminActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

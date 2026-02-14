@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/fon"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:orientation="vertical">
+
+        <!-- Поля рецепта (существующие) -->
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/fon"
+            android:hint="Название рецепта"
+            android:inputType="text"
+            android:textColorHint="@color/dark_gray" />
+
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/fon"
+            android:hint="Описание"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:textColorHint="@color/dark_gray" />
+
+        <EditText
+            android:id="@+id/etCookingSteps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/fon"
+            android:hint="Шаги приготовления"
+            android:inputType="textMultiLine"
+            android:minLines="4"
+            android:textColorHint="@color/dark_gray" />
+
+        <EditText
+            android:id="@+id/etCookingTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/fon"
+            android:hint="Время приготовления (мин)"
+            android:inputType="number"
+            android:textColorHint="@color/dark_gray" />
+
+        <Spinner
+            android:id="@+id/spDifficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/fon"
+            android:entries="@array/difficulty_array" />
+
+        <EditText
+            android:id="@+id/etServings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/fon"
+            android:hint="Количество порций"
+            android:inputType="number"
+            android:textColorHint="@color/dark_gray" />
+
+        <EditText
+            android:id="@+id/etCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/fon"
+            android:hint="Категория"
+            android:inputType="text"
+            android:textColorHint="@color/dark_gray" />
+
+        <!-- НОВЫЙ БЛОК: Ингредиенты -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/fon"
+            android:text="Ингредиенты:"
+            android:textColor="@color/black"
+        android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvIngredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/fon"
+            android:nestedScrollingEnabled="false" />
+
+        <Button
+            android:id="@+id/btnAddIngredient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/button"
+            android:text="+ Добавить ингредиент" />
+
+    </LinearLayout>
+</ScrollView>

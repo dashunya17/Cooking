@@ -5,15 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/__9_"
     tools:context=".RegisterActivity">
 
-    <LinearLayout
-        android:layout_width="5dp"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="409dp"
@@ -22,8 +16,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -42,12 +34,13 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="Регистрация"
-            android:textSize="34dp" />
+            android:textColor="@color/black"
+        android:textSize="34dp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="409dp"
+        android:layout_width="375dp"
         android:layout_height="250dp"
         android:layout_marginTop="1dp"
         android:orientation="vertical"
@@ -59,37 +52,42 @@
             android:id="@+id/textViewName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="   Имя"
-            android:textSize="20dp" />
+            android:text="Имя"
+            android:textColor="@color/black"
+        android:textSize="20dp" />
 
         <EditText
             android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="   Имя"
-            android:inputType="text" />
+            android:hint="Имя"
+            android:inputType="text"
+            android:textColorHint="@color/dark_gray" />
 
         <TextView
             android:id="@+id/textViewEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="    Email"
-            android:textSize="20dp" />
+            android:text="Email"
+            android:textColor="@color/black"
+        android:textSize="20dp" />
 
         <EditText
             android:id="@+id/editTextEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="    Email"
-            android:inputType="textEmailAddress" />
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/dark_gray" />
 
         <TextView
             android:id="@+id/textViewPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="    Пароль"
+            android:text="Пароль"
+            android:textColor="@color/black"
             android:textSize="20dp" />
 
         <EditText
@@ -97,8 +95,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="    Пароль"
-            android:inputType="textPassword" />
+            android:hint="Пароль"
+            android:inputType="textPassword"
+            android:textColorHint="@color/dark_gray" />
     </LinearLayout>
 
     <LinearLayout
@@ -106,8 +105,8 @@
         android:layout_width="409dp"
         android:layout_height="100dp"
         android:layout_marginBottom="132dp"
-        android:orientation="vertical"
         android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -117,12 +116,16 @@
             android:id="@+id/buttonReg"
             android:layout_width="301dp"
             android:layout_height="wrap_content"
-            android:text="Зарегистрироваться" />
+            android:backgroundTint="@color/button2"
+            android:text="Зарегистрироваться"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/buttonExit"
             android:layout_width="214dp"
             android:layout_height="wrap_content"
-            android:text="Войти" />
+            android:backgroundTint="@color/button2"
+            android:text="Войти"
+            android:textColor="@color/black"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
